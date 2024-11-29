@@ -13,6 +13,19 @@ Presentation:
 
 
 
+- fare eda di cars
+- fare eda di users
+
+- fare i join necessari
+
+- fare gli eda quelli veri
+
+
+
+
+
+
+
 - verificare gli utenti che si ripetono
 - controllare se il purchase price è diverso da quello standard
 
