@@ -1,0 +1,12 @@
+- Clean all the given data
+- Analyze all the files
+- Perform customer segmentation to cluster users based on their interactions and purchasing behaviors on the different platforms.
+- Investigate the types of cars (e.g., electric, hybrid, diesel) preferred on each platform and how this correlates with the platform's sales performance and user satisfaction.
+- Which patterns do you find in the purchasing behavior of the customers?
+- Describe the datasets and the eventual anomalies you find.
+- (optional) Open-ended exploration: you can explore the datasets further and propose additional analyses, modeling, visualizations, or insights.
+
+Presentation:
+- Use your findings from Task 1 to provide strategic recommendations for each platform, focusing on aspects such as user experience and marketing strategies.
+- Develop ideas that focus on data science and machine learning to enhance the digital customer journey on our website and how would you reduce unnesarry user journey.
+- Prepare a 20-25 minute presentation of your findings, dedicating  ~20 minutes to Task 1 and ~5 minutes for Task 2.
