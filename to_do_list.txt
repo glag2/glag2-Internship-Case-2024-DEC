@@ -10,3 +10,25 @@ Presentation:
 - Use your findings from Task 1 to provide strategic recommendations for each platform, focusing on aspects such as user experience and marketing strategies.
 - Develop ideas that focus on data science and machine learning to enhance the digital customer journey on our website and how would you reduce unnesarry user journey.
 - Prepare a 20-25 minute presentation of your findings, dedicating  ~20 minutes to Task 1 and ~5 minutes for Task 2.
+
+
+
+- verificare gli utenti che si ripetono
+- controllare se il purchase price è diverso da quello standard
+
+- fare il merge del sales e visits tramite id e type
+
+- possibile correlazione tra @email.  cognomi
+- review correlate al prezzo (uno felice paga di meno?
+- tempo speso sul sito, quanto correlato con l'acquisto
+    - se correlato, come varia il prezzo dell'auto
+
+- verificare se le persone che hanno acquistato più di un veicolo, hanno speso più o meno tempo sul 
+- cluste4r visualizzati con plotly 3d
+- capire se un cliente è interessato all'acquisto o meno
+- numero di clienti indecisi (ovvero che hanno fatto più visite prima di comprare)
+    - quanti visit_type	 come configuratore sono diventati acquisti (ad altri)
+
+-trending in base al timestamp
+- analisi sulle macchine più visualizzate-configurate
+
