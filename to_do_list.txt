@@ -45,3 +45,18 @@ Presentation:
 -trending in base al timestamp
 - analisi sulle macchine più visualizzate-configurate
 
+
+- fatturat e fatturat x paese  ebitda
+- mercati di sbocco
+- merlin.in (annual report)
+    - problemi di personale
+    - pil in decrescita
+- 5 cose più importanti presenti nell'annual report
+    - casi di conversione dell'utente
+    - come porti le persone da visite online a concessionario
+    - analisi del mercato
+    - un cliente ideale come sarebbe?
+        (ipotizzare che possibili clienti che partono da paesi più digitalizzati (es danimarca))
+        propensione rispetto ai paesi meno digitalizzati?
+        per il q1 ipotizzare una crescita in quali paesi avrei un'impatto maggiore?  (andamento dell'econodmia sull'economist)
+        possibile crescita in paesi che il gdp per person sta crescendo
