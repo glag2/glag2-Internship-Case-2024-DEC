@@ -12,20 +12,6 @@ Presentation:
 - Prepare a 20-25 minute presentation of your findings, dedicating  ~20 minutes to Task 1 and ~5 minutes for Task 2.
 
 
-
-- fare eda di cars
-- fare eda di users
-
-- fare i join necessari
-
-- fare gli eda quelli veri
-
-
-
-
-
-
-
 - verificare gli utenti che si ripetono
 - controllare se il purchase price è diverso da quello standard
 

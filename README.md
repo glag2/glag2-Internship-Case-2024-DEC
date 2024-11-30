@@ -9,5 +9,5 @@
 
 # What I've founded
 
-- The avaiable period goes from the middle of August 2020 to the end of January 2024
+- The avaiable period goes from the 25 June 2020 to the end of January 2024
 -
