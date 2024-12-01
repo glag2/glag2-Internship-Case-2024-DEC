@@ -10,4 +10,5 @@
 # What I've founded
 
 - The avaiable period goes from the 25 June 2020 to the end of January 2024
--
+- The strange user-review pattern releated to the dealership
+- Every platform have a different best seller, and since the price is strongly related to the fuel type this affects the sales performance quite a lot
