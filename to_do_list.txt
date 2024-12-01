@@ -65,12 +65,12 @@ Features:
     - ☑️which platform actracted more clients from the others
 
 
-    - avarage visit time for each user (visits.csv)
-    - number of visits of each users (visits.csv)
+    - ☑️avarage visit time for each user (visits.csv)
+    - ☑️number of visits of each users (visits.csv)
     - PLOT the conversion rate
     - try to impute the platform if the user bought something, apply it for every visit type of the same user
     - Number of Visits Before Purchase
-    - how the time spend correlate with the purchase performance
+    - how the time spent correlate with the purchase performance
     - explain the number of purchases per car model
     - which platform has the least visit before purchase by the same user
 
