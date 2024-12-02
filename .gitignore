@@ -1,6 +1,7 @@
 # custom ignore
+./to_do_list.txt
 *.txt
-Modified_Data\visits.csv
+Modified_Data/visits.csv
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
