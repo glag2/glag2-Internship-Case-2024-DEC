@@ -26,9 +26,9 @@ Your task is to analyze the datasets provided and extract actionable insights th
 Using the provided datasets, please perform the following analyses:
 
 1. Describe the datasets and the eventual anomalies you find. ☑️
-2. Which patterns do you find in the purchasing behavior of the customers?
+2. Which patterns do you find in the purchasing behavior of the customers? ☑️
 3. Conduct a thorough exploratory data analysis to understand the datasets. ☑️
-4. Perform customer segmentation to cluster users based on their interactions and purchasing behaviors on the different platforms.
+4. Perform customer segmentation to cluster users based on their interactions and purchasing behaviors on the different platforms. ☑️
 5. Investigate the types of cars (e.g., electric, hybrid, diesel) preferred on each platform and how this correlates with the platform's sales performance and user satisfaction. ☑️
 6. (optional) Open-ended exploration: you can explore the datasets further and propose additional analyses, modeling, visualizations, or insights. ☑️
 
