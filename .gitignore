@@ -1,6 +1,5 @@
 # custom ignore
-./to_do_list.txt
-*.txt
+to_do_list.txt
 Modified_Data/visits.csv
 
 # Byte-compiled / optimized / DLL files
