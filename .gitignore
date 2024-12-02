@@ -1,5 +1,5 @@
 # custom ignore
-to_to_list.txt
+*.txt
 Modified_Data\visits.csv
 
 # Byte-compiled / optimized / DLL files
