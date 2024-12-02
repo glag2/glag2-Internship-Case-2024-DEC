@@ -49,7 +49,7 @@ def hexbin_plot(df, x_col, y_col, gridsize=50, cmap='gnuplot', figsize=(10, 8)):
     :param figsize: Dimensioni del grafico (larghezza, altezza).
     """
     plt.figure(figsize=figsize)
-    plt.hexbin(df[x_col], df[y_col], gridsize=gridsize, cmap=cmap)
+    plt.hexbin(df[x_col], df[y_col], gridsize=gridsize, cmap=cmap, mincnt=1)
     plt.colorbar(label='Count')
     plt.xlabel(x_col)
     plt.ylabel(y_col)
