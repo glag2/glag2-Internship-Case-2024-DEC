@@ -1,6 +1,6 @@
 # Internship-Case-2024-DEC (BMW)
 
-This project was designed to demonstrate my expertise in data science, with a focus on automotive e-commerce analytics, as part of my journey toward securing an internship at BMW.
+This project was designed to demonstrate my expertise in data science, with a focus on automotive e-commerce analytics, as part of my journey toward trying to secure an internship at BMW.
 
 Below, I’ve included the most insightful charts below, highlighting important aspects of the dataset.
 
@@ -31,7 +31,6 @@ Below, I’ve included the most insightful charts below, highlighting important 
 
 ![1733216077929](image/README/1733216077929.png)
 
-
 ### Users.csv
 
 ![1733216138749](image/README/1733216138749.png)
@@ -40,7 +39,7 @@ Below, I’ve included the most insightful charts below, highlighting important 
 
 ### Sales.csv
 
-![1733217107520](image/README/1733217107520.png)
+![1733256479307](image/README/1733256479307.png)
 
 ![1733217124534](image/README/1733217124534.png)
 
