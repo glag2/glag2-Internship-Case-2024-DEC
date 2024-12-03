@@ -1,0 +1,1565 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.39">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Exploratory Data Analysis of Users.csv</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="[STEP 2.2] Users EDA_files/libs/clipboard/clipboard.min.js"></script>
+<script src="[STEP 2.2] Users EDA_files/libs/quarto-html/quarto.js"></script>
+<script src="[STEP 2.2] Users EDA_files/libs/quarto-html/popper.min.js"></script>
+<script src="[STEP 2.2] Users EDA_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="[STEP 2.2] Users EDA_files/libs/quarto-html/anchor.min.js"></script>
+<link href="[STEP 2.2] Users EDA_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="[STEP 2.2] Users EDA_files/libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="[STEP 2.2] Users EDA_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="[STEP 2.2] Users EDA_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="[STEP 2.2] Users EDA_files/libs/bootstrap/bootstrap-8a79a254b8e706d3c925cde0a310d4f0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Exploratory Data Analysis of Users.csv</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="loading-the-libraries-and-the-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="loading-the-libraries-and-the-dataset">1) Loading the libraries and the dataset</h2>
+<div id="cell-3" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> grafici</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-4" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read the data</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>users <span class="op">=</span> pd.read_csv(<span class="st">'Cleaned_Data/users.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="analyse-all-columns-one-by-one" class="level2">
+<h2 class="anchored" data-anchor-id="analyse-all-columns-one-by-one">2) Analyse all columns one by one</h2>
+<div id="cell-6" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check duplicates</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Duplicates:'</span>, users.duplicated().<span class="bu">sum</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Duplicates: 1112</code></pre>
+</div>
+</div>
+<div id="cell-7" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># remove duplicates</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>users <span class="op">=</span> users.drop_duplicates()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-8" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># print the null values</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(users.isnull().<span class="bu">sum</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>customer_id           0
+user_first_name    2084
+user_last_name     2081
+gender              284
+email              2183
+dtype: int64</code></pre>
+</div>
+</div>
+<div id="cell-9" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># rows that have the user_first_name missing and the user_last_name missing</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">len</span>(users[(users[<span class="st">'user_first_name'</span>].isnull()) <span class="op">&amp;</span> (users[<span class="st">'user_last_name'</span>].isnull()) <span class="op">&amp;</span> (users[<span class="st">'gender'</span>].isnull()) <span class="op">&amp;</span> (users[<span class="st">'email'</span>].isnull())]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>59</code></pre>
+</div>
+</div>
+<p>For now it’s fine as it is</p>
+<div id="cell-11" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>users.dtypes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>customer_id        object
+user_first_name    object
+user_last_name     object
+gender             object
+email              object
+dtype: object</code></pre>
+</div>
+</div>
+<section id="customer_id-column" class="level3">
+<h3 class="anchored" data-anchor-id="customer_id-column">Customer_id column</h3>
+<p>Already checked in the first notebook</p>
+</section>
+<section id="user-first-name-column" class="level3">
+<h3 class="anchored" data-anchor-id="user-first-name-column">User first name column</h3>
+<div id="cell-15" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>grafici.plot_categorical_column(users, <span class="st">"user_first_name"</span>, color<span class="op">=</span><span class="st">"darkcyan"</span>, min_percentile<span class="op">=</span><span class="dv">0</span>, max_percentile<span class="op">=</span><span class="dv">5</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">5</span>), hide_outliers<span class="op">=</span><span class="va">True</span>, anomaly_threshold<span class="op">=</span><span class="fl">0.05</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Categorie per Frequenza:
+Frequenza 1: Maximilian, Simon
+Frequenza 12: Leroy, Terrance
+Frequenza 13: Darin, Lonnie, Perry, Stuart, Wyatt
+Frequenza 14: Franklin, Gene, Gilbert, Leon
+Frequenza 15: Dave, Diamond, Preston
+Frequenza 16: Angie, Isabel, Max, Rickey, Warren
+Frequenza 17: Gregg, Herbert, Neil, Vernon
+Frequenza 18: Brady, Cristina, Gordon, Guy, Terrence
+Frequenza 19: Alvin, Bernard, Daryl, Parker, Tami, Yesenia, Zoe
+Frequenza 20: Bob, Darius, Earl, Francis, Hayden, Karl, Malik, Marco, Mindy, Nina, Priscilla, Sally, Tracie
+Frequenza 21: Cesar, Faith, Glenda, Kent, Mia, Pedro
+Frequenza 22: Alfred, Latasha, Lorraine, Mercedes, Ross
+Frequenza 23: Clarence, Doris, Gavin, Jermaine, Karla, Kellie, Kerri, Kiara, Mandy, Norman, Ray, Rick, Sonia, Stefanie
+Frequenza 24: Cassie, Dominic, Gwendolyn, Lydia, Maxwell, Melody, Patty, Riley, Sheena
+Frequenza 25: Damon, Dan, Glen, Jackson, Jasmin, Kristie, Marisa, Nicolas, Raven, Robyn, Shawna, Shelia
+Frequenza 26: Don, Isabella, Ivan, Phyllis, Sue
+Frequenza 27: Alejandra, Bryce, Chelsey, Cole, Daisy, Devon, Frances, Lacey, Tammie
+Frequenza 28: Aimee, Carly, Collin, Eduardo, Gabriela, Joann, Kirk, Levi, Mckenzie, Shari
+Frequenza 29: Adriana, Bill, Cristian, Kirsten, Kylie, Stacie, Xavier
+Frequenza 30: Christie, Edgar, Geoffrey, Marcia
+Frequenza 31: Alec, Andres, Caitlyn, Charlene, Dillon, Gabriella, Jo, Makayla, Selena, Tabitha, Tricia
+Frequenza 32: Ebony, Fred, Jaclyn, Pam, Roberta, Tasha, Tristan
+Frequenza 33: Cassidy, Clayton, Fernando, Mason, Sandy, Sheryl, Tyrone
+Frequenza 34: Alisha, Sergio
+Frequenza 35: Alice, Ariel, Duane, Jocelyn, Loretta, Mikayla, Summer, Yvette
+Frequenza 36: Dalton, Elaine, Elijah, Greg, Jade, Karina, Norma, Sophia, Tom
+Frequenza 37: Ariana, Belinda, Clifford, Eileen, Jim, Kristopher
+Frequenza 38: Ruben
+Frequenza 39: Colton, Drew, Helen, Jeanne, Mathew
+Frequenza 40: Alexa, Charlotte, Dominique, Kaylee
+Frequenza 41: Bianca, Chloe, Clinton, Hayley, Jackie, Omar
+Frequenza 42: Candace, Jerome, Maurice
+Frequenza 43: Claire, Kerry
+Frequenza 44: Dorothy, Jean, Tanner
+Frequenza 45: Darryl, Jake, Joan, Jody, Julian, Latoya, Stanley, Vickie
+Frequenza 46: Gail, Grant, Kaitlin, Mallory, Maureen, Ralph, Theodore, Tim
+Frequenza 47: Ashlee, Harry, Howard, Rose
+Frequenza 48: Ernest, Hailey, Kurt, Meagan, Melvin, Michaela
+Frequenza 49: Marvin
+Frequenza 50: Brad, Javier, Jeanette, Lance
+Frequenza 51: Adrienne, Bailey, Brendan, Dwayne, Marilyn, Shaun
+Frequenza 52: Bridget, Colin, Isaiah, Kristine, Rebekah
+Frequenza 53: Breanna, Cheyenne, Eugene, Grace, Meredith
+Frequenza 54: Candice, Leonard, Penny, Rita, Ruth, Vicki
+Frequenza 55: Kelli, Mackenzie
+Frequenza 56: Briana, Dakota, Ellen, Harold, Sylvia
+Frequenza 57: Carmen, Hector, Joanne, Jonathon, Mariah, Sierra
+Frequenza 58: Alexandria, Joy, Ronnie, Sheri
+Frequenza 60: Becky, Betty, Connor, Dean, Evelyn, Spencer
+Frequenza 61: Chase, Claudia, Madeline, Savannah
+Frequenza 62: Jillian
+Frequenza 63: Peggy
+Frequenza 64: Johnathan, Toni
+Frequenza 65: Desiree, Eddie, Hunter, Jenny, Joyce, Nichole, Tommy
+Frequenza 66: Alejandro, Ana, Noah, Oscar, Ricardo
+Frequenza 67: Roberto, Shelley
+Frequenza 69: Reginald, Shirley, Traci
+Frequenza 70: Destiny, Kristy, Yvonne
+Frequenza 71: Barry, Beverly, Judith
+Frequenza 72: Frederick, Jane, Kari
+Frequenza 73: Audrey, Edwin, Lee
+Frequenza 74: Martha
+Frequenza 75: Autumn, Bethany, Francisco, Glenn
+Frequenza 76: Darrell, Paige, Sonya, Wanda
+Frequenza 77: Calvin
+Frequenza 78: Bonnie, Dale, Darlene, Gloria, Isaac, Joanna, Kristi, Mike
+Frequenza 79: Angelica
+Frequenza 80: Caroline, Manuel, Steve
+Frequenza 81: Darren, Roy
+Frequenza 82: Chris, Jodi, Krystal, Lucas, Mario, Monique
+Frequenza 83: Anita, Devin, Sherri
+Frequenza 84: Jaime, Jeremiah
+Frequenza 85: Ethan, Krista, Tracey, Yolanda
+Frequenza 86: Janice, Micheal, Shelly, Sydney
+Frequenza 87: Louis
+Frequenza 88: Albert, Emma, Jeff, Rachael
+Frequenza 89: Gabrielle
+Frequenza 90: Garrett, Kara
+Frequenza 91: Judy, Katelyn, Logan
+Frequenza 92: Annette, Blake, Luke
+Frequenza 94: Marissa, Miguel
+Frequenza 95: Jorge
+Frequenza 99: Kaitlyn, Marc
+Frequenza 100: Cathy, Derrick, Jesus
+Frequenza 101: Seth
+Frequenza 102: Alison, Meghan, Willie
+Frequenza 103: Arthur, Whitney
+Frequenza 104: Joe, Kendra
+Frequenza 105: Adrian, Trevor
+Frequenza 106: Wesley
+Frequenza 107: Jay, Lynn
+Frequenza 108: Andre
+Frequenza 109: Natasha
+Frequenza 111: Allen
+Frequenza 112: Bruce, Virginia
+Frequenza 113: Billy, Christy, Debbie, Shelby
+Frequenza 114: Brittney, Cameron, Evan, Felicia, Gerald, Molly
+Frequenza 115: Walter, Wayne
+Frequenza 116: Carla, Katrina
+Frequenza 117: Colleen, Gabriel, Ian, Lawrence, Marie, Randall
+Frequenza 118: Bobby, Jimmy, Jon, Laurie, Terri
+Frequenza 119: Misty
+Frequenza 120: Caleb, Connie, Jack, Miranda
+Frequenza 121: Caitlin, Johnny, Mitchell
+Frequenza 123: Sabrina
+Frequenza 124: Brandi
+Frequenza 125: Abigail, Cory, Ricky
+Frequenza 126: Deanna
+Frequenza 127: Haley
+Frequenza 128: Danny
+Frequenza 129: Carl, Madison, Roger
+Frequenza 132: Suzanne
+Frequenza 133: Jenna, Russell
+Frequenza 134: Olivia, Rodney
+Frequenza 135: Erika
+Frequenza 136: Erik, Martin
+Frequenza 137: Angel, Nathaniel
+Frequenza 139: Corey
+Frequenza 140: Brent
+Frequenza 141: Henry, Melinda
+Frequenza 143: Curtis, Regina, Tamara
+Frequenza 144: Beth, Tanya
+Frequenza 145: Leah
+Frequenza 146: Anne
+Frequenza 147: Antonio
+Frequenza 148: Brooke, Heidi, Tony
+Frequenza 152: Jared
+Frequenza 154: Victor
+Frequenza 156: Brett
+Frequenza 157: Sheila
+Frequenza 158: Kelsey, Lindsay, Morgan, Sherry
+Frequenza 159: Joel
+Frequenza 160: Kristina, Philip
+Frequenza 162: Tonya
+Frequenza 164: Kim
+Frequenza 165: Dylan, Luis
+Frequenza 166: Jeffery, Katie
+Frequenza 169: Alex, Brianna, Stacey
+Frequenza 172: Brandy
+Frequenza 175: Alan, Lindsey
+Frequenza 176: Cassandra
+Frequenza 177: Vincent
+Frequenza 179: Carlos, Paula
+Frequenza 180: Casey
+Frequenza 182: Christian, Janet
+Frequenza 185: Shane
+Frequenza 186: Diane, Kathy, Rhonda
+Frequenza 188: Carolyn, Randy
+Frequenza 189: Gina
+Frequenza 190: Carol
+Frequenza 193: Alexandra, Renee
+Frequenza 195: Chelsea
+Frequenza 196: Ann, Marcus
+Frequenza 197: Carrie
+Frequenza 199: Jerry
+Frequenza 200: Dustin
+Frequenza 205: Troy
+Frequenza 210: Frank, Veronica
+Frequenza 211: Phillip, Valerie
+Frequenza 212: Jill
+Frequenza 213: Theresa
+Frequenza 216: Tara
+Frequenza 218: Jasmine
+Frequenza 220: Derek
+Frequenza 222: Allison, Juan
+Frequenza 223: Dennis
+Frequenza 225: Terry
+Frequenza 227: Diana
+Frequenza 230: Stacy
+Frequenza 233: Austin, Cindy
+Frequenza 237: Craig, Larry, Melanie
+Frequenza 239: Alicia, Alyssa
+Frequenza 241: Todd
+Frequenza 242: Holly
+Frequenza 244: Dana, Raymond
+Frequenza 245: Michele
+Frequenza 248: Julia
+Frequenza 252: Alexis, Natalie
+Frequenza 253: Cheryl, Hannah
+Frequenza 256: Cody, Wendy
+Frequenza 258: Jesse
+Frequenza 266: Bradley
+Frequenza 267: Vanessa
+Frequenza 270: Kristin
+Frequenza 273: Margaret
+Frequenza 276: Debra
+Frequenza 278: Monica
+Frequenza 284: Leslie
+Frequenza 286: Kathryn
+Frequenza 287: Anna
+Frequenza 291: Robin
+Frequenza 292: Travis
+Frequenza 297: April, George
+Frequenza 302: Keith
+Frequenza 303: Bryan
+Frequenza 304: Chad, Douglas, Shawn
+Frequenza 305: Jacqueline
+Frequenza 309: Kayla
+Frequenza 316: Erica
+Frequenza 320: Catherine, Kristen
+Frequenza 323: Barbara, Peter
+Frequenza 329: Nathan
+Frequenza 330: Jordan
+Frequenza 332: Samuel
+Frequenza 333: Tina
+Frequenza 334: Gary
+Frequenza 337: Alexander, Erin, Nancy
+Frequenza 341: Dawn
+Frequenza 342: Kathleen
+Frequenza 344: Taylor
+Frequenza 345: Sharon
+Frequenza 346: Deborah
+Frequenza 347: Denise, Teresa
+Frequenza 351: Courtney, Jose
+Frequenza 361: Victoria
+Frequenza 368: Donna
+Frequenza 377: Sara
+Frequenza 379: Edward
+Frequenza 381: Lori
+Frequenza 383: Ronald
+Frequenza 385: Sean
+Frequenza 387: Tracy
+Frequenza 389: Tyler
+Frequenza 394: Jamie
+Frequenza 397: Pamela
+Frequenza 401: Zachary
+Frequenza 404: Jeremy
+Frequenza 407: Kyle
+Frequenza 408: Maria
+Frequenza 414: Brenda
+Frequenza 421: Amber
+Frequenza 423: Sandra
+Frequenza 427: Donald, Shannon
+Frequenza 433: Linda
+Frequenza 434: Crystal
+Frequenza 436: Andrea
+Frequenza 439: Katherine
+Frequenza 441: Tiffany
+Frequenza 462: Aaron, Adam
+Frequenza 465: Benjamin
+Frequenza 468: Brittany
+Frequenza 469: Danielle
+Frequenza 471: Tammy
+Frequenza 473: Patrick
+Frequenza 489: Lauren
+Frequenza 499: Christine
+Frequenza 500: Stephen
+Frequenza 505: Gregory
+Frequenza 506: Cynthia, Megan
+Frequenza 545: Kenneth
+Frequenza 547: Patricia
+Frequenza 557: Samantha
+Frequenza 568: Rachel
+Frequenza 569: Jacob
+Frequenza 577: Julie
+Frequenza 593: Susan
+Frequenza 600: Christina
+Frequenza 638: Emily
+Frequenza 647: Paul
+Frequenza 665: Brandon
+Frequenza 669: Nicholas
+Frequenza 672: Jonathan
+Frequenza 683: Kelly
+Frequenza 694: Scott
+Frequenza 702: Karen
+Frequenza 705: Rebecca
+Frequenza 713: Justin
+Frequenza 726: Charles
+Frequenza 739: Nicole
+Frequenza 768: Laura
+Frequenza 786: Heather
+Frequenza 795: Ryan
+Frequenza 805: Timothy
+Frequenza 812: Angela
+Frequenza 821: Jeffrey
+Frequenza 825: Eric
+Frequenza 896: Amy
+Frequenza 903: Mary
+Frequenza 904: Andrew
+Frequenza 910: Richard
+Frequenza 915: Anthony
+Frequenza 931: Steven
+Frequenza 936: Stephanie
+Frequenza 949: Kevin
+Frequenza 963: Mark
+Frequenza 968: Sarah
+Frequenza 972: Thomas
+Frequenza 977: Joshua
+Frequenza 993: Melissa
+Frequenza 1005: Jason
+Frequenza 1020: Ashley
+Frequenza 1036: Elizabeth
+Frequenza 1039: Michelle
+Frequenza 1051: Amanda
+Frequenza 1080: Kimberly
+Frequenza 1097: Brian
+Frequenza 1227: Joseph
+Frequenza 1287: Daniel
+Frequenza 1290: William
+Frequenza 1304: Lisa
+Frequenza 1336: Jessica
+Frequenza 1404: Matthew
+Frequenza 1840: Christopher
+Frequenza 1857: Robert
+Frequenza 1908: Jennifer
+Frequenza 1915: John
+Frequenza 2034: James
+Frequenza 2062: David
+Frequenza 2084: Missing
+Frequenza 3096: Michael
+
+
+Stringhe anomale rilevate:
++-------------+----------------+
+| Stringa     | Frequenza      |
++=============+================+
+| Maximilian  | Frequenza 1    |
++-------------+----------------+
+| Max         | Frequenza 16   |
++-------------+----------------+
+| Guy         | Frequenza 18   |
++-------------+----------------+
+| Zoe         | Frequenza 19   |
++-------------+----------------+
+| Bob         | Frequenza 20   |
++-------------+----------------+
+| Mia         | Frequenza 21   |
++-------------+----------------+
+| Ray         | Frequenza 23   |
++-------------+----------------+
+| Dan         | Frequenza 25   |
++-------------+----------------+
+| Don         | Frequenza 26   |
++-------------+----------------+
+| Sue         | Frequenza 26   |
++-------------+----------------+
+| Jo          | Frequenza 31   |
++-------------+----------------+
+| Pam         | Frequenza 32   |
++-------------+----------------+
+| Tom         | Frequenza 36   |
++-------------+----------------+
+| Jim         | Frequenza 37   |
++-------------+----------------+
+| Kristopher  | Frequenza 37   |
++-------------+----------------+
+| Tim         | Frequenza 46   |
++-------------+----------------+
+| Alexandria  | Frequenza 58   |
++-------------+----------------+
+| Joy         | Frequenza 58   |
++-------------+----------------+
+| Ana         | Frequenza 66   |
++-------------+----------------+
+| Lee         | Frequenza 73   |
++-------------+----------------+
+| Roy         | Frequenza 81   |
++-------------+----------------+
+| Joe         | Frequenza 104  |
++-------------+----------------+
+| Jay         | Frequenza 107  |
++-------------+----------------+
+| Ian         | Frequenza 117  |
++-------------+----------------+
+| Jon         | Frequenza 118  |
++-------------+----------------+
+| Kim         | Frequenza 164  |
++-------------+----------------+
+| Ann         | Frequenza 196  |
++-------------+----------------+
+| Jacqueline  | Frequenza 305  |
++-------------+----------------+
+| Amy         | Frequenza 896  |
++-------------+----------------+
+| Christopher | Frequenza 1840 |
++-------------+----------------+
+
+Il valore del percentile minimo (0%) è: 1.0
+Il valore del percentile massimo (5%) è: 19.0
+
+Frequenze escluse: 3096, 2084, 2062, 2034, 1915, 1908, 1857, 1840, 1404, 1336, 1304, 1290, 1287, 1227, 1097, 1080, 1051, 1039, 1036, 1020, 1005, 993, 977, 972, 968, 963, 949, 936, 931, 915, 910, 904, 903, 896, 825, 821, 812, 805, 795, 786, 768, 739, 726, 713, 705, 702, 694, 683, 672, 669, 665, 647, 638, 600, 593, 577, 569, 568, 557, 547, 545, 506, 505, 500, 499, 489, 473, 471, 469, 468, 465, 462, 441, 439, 436, 434, 433, 427, 423, 421, 414, 408, 407, 404, 401, 397, 394, 389, 387, 385, 383, 381, 379, 377, 368, 361, 351, 347, 346, 345, 344, 342, 341, 337, 334, 333, 332, 330, 329, 323, 320, 316, 309, 305, 304, 303, 302, 297, 292, 291, 287, 286, 284, 278, 276, 273, 270, 267, 266, 258, 256, 253, 252, 248, 245, 244, 242, 241, 239, 237, 233, 230, 227, 225, 223, 222, 220, 218, 216, 213, 212, 211, 210, 205, 200, 199, 197, 196, 195, 193, 190, 189, 188, 186, 185, 182, 180, 179, 177, 176, 175, 172, 169, 166, 165, 164, 162, 160, 159, 158, 157, 156, 154, 152, 148, 147, 146, 145, 144, 143, 141, 140, 139, 137, 136, 135, 134, 133, 132, 129, 128, 127, 126, 125, 124, 123, 121, 120, 119, 118, 117, 116, 115, 114, 113, 112, 111, 109, 108, 107, 106, 105, 104, 103, 102, 101, 100, 99, 95, 94, 92, 91, 90, 89, 88, 87, 86, 85, 84, 83, 82, 81, 80, 79, 78, 77, 76, 75, 74, 73, 72, 71, 70, 69, 67, 66, 65, 64, 63, 62, 61, 60, 58, 57, 56, 55, 54, 53, 52, 51, 50, 49, 48, 47, 46, 45, 44, 43, 42, 41, 40, 39, 38, 37, 36, 35, 34, 33, 32, 31, 30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 20
+Frequenze mantenute: 19, 18, 17, 16, 15, 14, 13, 12, 1</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="%5BSTEP%202.2%5D%20Users%20EDA_files/figure-html/cell-9-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="%5BSTEP%202.2%5D%20Users%20EDA_files/figure-html/cell-9-output-3.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Nothing strange here</p>
+</section>
+<section id="user-last-name-column" class="level3">
+<h3 class="anchored" data-anchor-id="user-last-name-column">User last name column</h3>
+<p>If wanted it’s possible to get the nationality from the name and surename combination, see [<a href="https://forebears.io/onograph/">link</a>]</p>
+<div id="cell-19" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>grafici.plot_categorical_column(users, <span class="st">"user_last_name"</span>, color<span class="op">=</span><span class="st">"darkcyan"</span>, min_percentile<span class="op">=</span><span class="dv">0</span>, max_percentile<span class="op">=</span><span class="dv">3</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">5</span>), hide_outliers<span class="op">=</span><span class="va">True</span>, anomaly_threshold<span class="op">=</span><span class="fl">0.05</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Categorie per Frequenza:
+Frequenza 24: Good
+Frequenza 26: Kidd
+Frequenza 28: Brandt
+Frequenza 29: Stanton
+Frequenza 30: David, Holder, Mata
+Frequenza 31: Bird, Sanford
+Frequenza 32: Compton, Jarvis, Murillo, Ritter
+Frequenza 33: Cooley, Key, Mayo, Travis
+Frequenza 34: Bonilla, Cuevas, Estes, Moyer, Werner
+Frequenza 35: Andersen, Blankenship, Bright, Conway, Montes, Odom
+Frequenza 36: Beltran, Joyce, Levy, Mckay, Mercer, Shea
+Frequenza 37: Bender, Cowan, Davila, Dickson, Esparza, Glass, Hanna, Lutz, Mcneil, Meza, Oconnell, Terrell
+Frequenza 38: Baird, Booker, Carney, Chaney, Church, Donaldson, Haas, Hays, Mccarty, Proctor, Richmond, Rivers, Rubio, Vang
+Frequenza 39: Choi, Daugherty, Duarte, Dudley, Forbes, Galloway, Gay, Hatfield, Horne, Moses, Potts, Shepard, Whitney
+Frequenza 40: Acevedo, Barr, Bernard, Blevins, Cordova, Kaufman, Mcmillan, Mullen, Sampson, Schaefer
+Frequenza 41: Ashley, Cooke, Davies, Ewing, Haley, Hickman, Hurley, Krueger, Mccann, Nixon, Osborn, Riddle, Weeks, Zuniga
+Frequenza 42: Berger, Blanchard, Cherry, Costa, Ferrell, Hayden, Hester, Huerta, Johns, Maynard, Mooney, Villa, Yu
+Frequenza 43: Arellano, Benitez, Bolton, Braun, Buck, Clements, Duffy, Durham, Escobar, Finley, Fritz, Herman, Levine, Middleton, Petty, Valentine, Walls
+Frequenza 44: Chung, Crane, Dodson, Dougherty, Downs, Gaines, Huber, Rowland, Santana
+Frequenza 45: Arroyo, Bentley, Blackwell, Buckley, Cisneros, Duke, Farley, Gamble, Landry, Mcknight, Pugh, Sheppard, Zavala
+Frequenza 46: Ali, Barajas, Bradshaw, Branch, Case, Ellison, Frey, Golden, Gould, Hardin, Orr, Rangel, Rush, Stout, Stuart, Waller, Woodward
+Frequenza 47: Ayers, Benton, Blackburn, Conrad, Frost, Holden, House, Mckee, Mosley, Novak, Pollard, Schmitt, Spence, Tapia, Vaughan, Zhang
+Frequenza 48: Barry, Benjamin, Cantu, Crosby, Hebert, Hinton, Hobbs, Hooper, Koch, Krause, Macdonald, Mcconnell, Mcintyre, Merritt, Rasmussen, Spears, Stark, Valencia, Villegas, Wyatt
+Frequenza 49: Avery, Bullock, Donovan, Fry, Haney, Harrell, Howe, Maddox, Mayer, Mccall, Rich, Riggs, Sellers, Shah, Sosa, Vance, Velazquez
+Frequenza 50: Andrade, Archer, Brennan, Gates, Ho, Kaiser, Mcgrath, Noble, Oneill, Pineda, Ponce, Whitehead, Wu
+Frequenza 51: Bartlett, Bautista, Cabrera, Cantrell, Frederick, Hahn, Hendrix, Herring, Kline, Lucero, Mcclure, Mcintosh, Mcmahon, Mcpherson, Nolan, Parrish, Randolph, Rosario, Sexton
+Frequenza 52: Best, Bray, Burch, Faulkner, Fitzpatrick, Galvan, Henson, Kerr, Mays, Meadows, Melendez, Michael, Moon, Pennington, Preston, Strong, Sweeney
+Frequenza 53: Barron, Carson, Clay, Coffey, Harding, Huang, Jacobson, Lester, Lowery, Mahoney
+Frequenza 54: Barrera, Calhoun, Dorsey, Farrell, Friedman, Frye, Gentry, Hendricks, Irwin, Knapp, Knox, Lin, Melton, Pace, Peck, Prince, Roach, Summers, Winters
+Frequenza 55: Arias, Boyer, Decker, Dunlap, Giles, Keith, Mcclain, Odonnell, Pruitt, Reilly, Rollins, Savage, Velez, Wiley
+Frequenza 56: Bean, Boyle, Eaton, Everett, Franco, French, Gallegos, Kent, Leblanc, Lynn, Pitts, Wilkerson, Woodard
+Frequenza 57: Allison, Baxter, Bradford, Lang, Mathis, Nielsen, Shannon, Shields, Sloan, Valenzuela, Villanueva, Villarreal
+Frequenza 58: Anthony, Atkins, Horn, Huynh, Ochoa, Pacheco, Randall, Stein
+Frequenza 59: Gilmore, Houston, Kemp, Lam, Livingston, Madden, Mcfarland, Mclean, Morse, Patrick, Rivas
+Frequenza 60: Abbott, Booth, Castaneda, Hull, Ibarra, Wilkinson
+Frequenza 61: Davenport, Glenn, Greer, Heath, Macias, Mercado, Orozco, Raymond, Small, Ware, Yoder
+Frequenza 62: Bruce, Camacho, Cameron, Cochran, Kane, Leach, Lozano, Petersen, Rocha, Rosales, Solomon
+Frequenza 63: Beard, Beasley, Chase, Mccullough, Olsen, Richard, Roman, Roy, Salas, Suarez
+Frequenza 64: Ballard, Bryan, Charles, Christian, Conner, Jefferson, Massey, Morrow, Roberson, Stephenson, Stokes, Tanner, Wiggins
+Frequenza 65: Boone, Cline, Dalton, Dickerson, Dyer, Gillespie, Marks, Mcdowell, Morton, Serrano, Singleton, Wilcox
+Frequenza 66: Bridges, Burgess, Conley, Hancock, Larsen, Phelps, Pittman, Rowe, Russo, Solis, Walton, Whitaker
+Frequenza 67: Bond, Foley, Hess, Holloway, Hurst, Hutchinson, Kirby, Liu, Norton, Snow, Sparks, Vincent
+Frequenza 68: Berg, Cain, Cardenas, Collier, Garrison, Hines, Nash, Velasquez
+Frequenza 69: Browning, Cervantes, Delacruz, Dillon, Grimes, Hensley, Leon, Mathews, Robles, Sawyer, Skinner, Underwood
+Frequenza 70: Copeland, Fuentes, Glover, Huffman, Kirk, Lindsey, Nicholson, Oneal, Stafford, Zamora
+Frequenza 71: Atkinson, Burnett, Deleon, English, Khan, Mckenzie, Meyers, Mora, Moss, Shaffer
+Frequenza 72: Adkins, Carey, Hoover, Lamb, Poole, York
+Frequenza 73: Combs, Garner, Kramer, Miranda, Patton, Pratt
+Frequenza 74: Bowers, Briggs, Callahan, Colon, Dennis, Flowers, Gibbs, Hodge, Hogan, Huff, Li, Marsh, Norman, Rojas
+Frequenza 75: Bauer, Hammond, Harrington, Hood, Humphrey, Mack, Pope, Shepherd, Townsend, Walter, Weiss
+Frequenza 76: Chan, Drake, Guerra, Lara
+Frequenza 77: Brock, Mcguire, Oconnor, Roth, Wall
+Frequenza 78: Aguirre, Bass, Buchanan, Calderon, Carrillo, Hartman, Joseph, Malone, Owen, Schroeder, Trevino, Wilkins
+Frequenza 79: Bowen, Curry, Mcbride, Salinas, Yates
+Frequenza 80: Barton, Flynn, Monroe, Saunders, Tate
+Frequenza 81: Clayton, Miles, Moody, Trujillo, Webster
+Frequenza 82: Christensen, Gill, Mclaughlin, Mejia, Montoya
+Frequenza 83: Cobb, Francis, Short, Tyler
+Frequenza 84: Campos, Clarke, Duran, Erickson, Farmer, Goodwin, Hubbard, Lyons, Stevenson, Wise
+Frequenza 85: Avila, Hodges, Mccormick, Reeves
+Frequenza 86: Brady, Juarez, Mcgee, Wolf
+Frequenza 87: Ball, Fischer, Marquez, Osborne, Parsons, Singh
+Frequenza 88: Daniel, Lloyd
+Frequenza 89: Floyd, Frank, Holt, Mann, Navarro, Padilla, Park, Paul, Quinn
+Frequenza 90: Acosta, Baldwin, Casey, Chang, Fleming, Gallagher, Molina, Mueller, Newton, Strickland
+Frequenza 91: Hampton, Hardy, Terry, Yang
+Frequenza 92: Bush, Guerrero, Higgins, Le, Maxwell, Waters
+Frequenza 93: Barber, Pham, Potter, Vaughn
+Frequenza 94: Blake, Craig, Figueroa, Fitzgerald, Wang
+Frequenza 95: Cross, Dominguez, Fields, Manning
+Frequenza 96: Ayala, Cummings, Doyle, Harmon, Leonard, Ramsey, Todd
+Frequenza 97: Cortez, Graves, Reese
+Frequenza 98: Banks, Rodgers, Sherman
+Frequenza 99: Cannon, Goodman, Ingram, Luna, Moran, Robbins
+Frequenza 100: Becker, Blair, Lowe, Mullins, Norris, Watts
+Frequenza 101: Dawson, Frazier, Hale, Mckinney, Page
+Frequenza 102: Byrd, Cohen, Gross, Haynes, Wolfe
+Frequenza 103: Chandler, Horton, Logan, Sandoval
+Frequenza 104: Lambert, Pena, Simon, Wade, Warner
+Frequenza 106: Fletcher, Griffith, Love, Sharp
+Frequenza 107: Caldwell, Steele, Vazquez
+Frequenza 108: Klein, Schultz, Zimmerman
+Frequenza 109: Barker, Keller, Mccarthy, Neal, Sutton, Swanson, Thornton
+Frequenza 110: Espinoza, Santos
+Frequenza 111: May
+Frequenza 112: Shelton, Soto
+Frequenza 113: Brewer, Douglas, Reid
+Frequenza 115: Benson, Jennings, Maldonado
+Frequenza 116: Contreras, Rhodes, Walsh
+Frequenza 117: Santiago, Vega
+Frequenza 118: Gregory, Nunez, Powers, Weber
+Frequenza 119: Alvarado, Hopkins
+Frequenza 120: Holland, Valdez
+Frequenza 122: Barrett, Bates, Delgado
+Frequenza 123: Bowman, Obrien
+Frequenza 124: Lucas, Parks
+Frequenza 126: Bishop
+Frequenza 127: Carr, George, Schwartz
+Frequenza 128: Fowler, Walters
+Frequenza 129: Berry, Mcdaniel, Ortega
+Frequenza 130: Curtis, Estrada, Fuller
+Frequenza 131: Beck, Davidson, Pearson, Sims, Wong
+Frequenza 132: Chambers, Jensen, Oliver
+Frequenza 133: Chen, Schneider, Stanley
+Frequenza 134: Barnett, Franklin
+Frequenza 135: Burton
+Frequenza 136: Dean, Lynch, Rios
+Frequenza 138: Gilbert, Lawson
+Frequenza 139: Newman
+Frequenza 140: Mendez
+Frequenza 141: Day, Hanson, Richards, Williamson
+Frequenza 142: Welch
+Frequenza 143: Lawrence
+Frequenza 144: Mccoy, Montgomery, Munoz
+Frequenza 145: Aguilar, Grant
+Frequenza 147: Hawkins, Wheeler
+Frequenza 148: Carlson, Greene, Morrison, Salazar
+Frequenza 149: Harvey, Matthews
+Frequenza 150: Larson, Vargas, Watkins
+Frequenza 151: Chapman, Hansen
+Frequenza 152: Andrews, Dunn, Gardner, Garrett, Jacobs, Little
+Frequenza 153: Harper
+Frequenza 154: Burke
+Frequenza 155: Johnston, Lane
+Frequenza 156: Fox, Ray
+Frequenza 157: Fernandez, Knight, Perkins, Stephens
+Frequenza 158: Robertson
+Frequenza 159: Arnold, Riley
+Frequenza 160: Armstrong, Willis
+Frequenza 161: Duncan
+Frequenza 162: Howell
+Frequenza 163: Austin
+Frequenza 164: Garza, Herrera, Tran
+Frequenza 165: Bradley, Hart
+Frequenza 166: Cunningham
+Frequenza 167: Guzman, Hudson, Palmer, Weaver
+Frequenza 168: Elliott, Silva
+Frequenza 169: Carroll, Pierce
+Frequenza 170: Daniels
+Frequenza 173: Holmes, Peters
+Frequenza 174: Patel, Rose
+Frequenza 176: Castro
+Frequenza 177: Schmidt
+Frequenza 178: Boyd, Carpenter, Hunt
+Frequenza 179: Hoffman, Mills
+Frequenza 181: Freeman
+Frequenza 183: Payne
+Frequenza 184: Spencer, Vasquez
+Frequenza 185: Gordon, Simpson
+Frequenza 186: Shaw
+Frequenza 188: Hicks, Medina, Meyer
+Frequenza 189: Burns, Hunter, Ryan
+Frequenza 190: Dixon, Wagner
+Frequenza 192: Black, Ferguson, Webb
+Frequenza 193: Castillo, Mendoza, Nichols
+Frequenza 194: Warren
+Frequenza 196: Ellis, Romero
+Frequenza 197: Henry
+Frequenza 198: Jimenez
+Frequenza 199: Snyder
+Frequenza 202: Rice, Woods
+Frequenza 204: Washington
+Frequenza 205: Kelley, Wells
+Frequenza 206: Moreno, Stone
+Frequenza 208: Mason
+Frequenza 210: Kennedy, Marshall, Tucker
+Frequenza 211: Griffin
+Frequenza 214: Crawford, Mcdonald, Ruiz
+Frequenza 215: Owens
+Frequenza 216: Olson, Porter
+Frequenza 221: Alvarez
+Frequenza 222: Ford
+Frequenza 223: Gibson, Murray
+Frequenza 227: Bryant, Hayes, Stevens
+Frequenza 228: Cole
+Frequenza 231: Harrison, Patterson
+Frequenza 233: Jordan
+Frequenza 234: Coleman
+Frequenza 235: Chavez, Hamilton
+Frequenza 237: Ortiz
+Frequenza 238: Gonzales
+Frequenza 241: Ramos, West
+Frequenza 243: Alexander
+Frequenza 245: Simmons
+Frequenza 246: Barnes
+Frequenza 247: Butler
+Frequenza 248: Reynolds, Wallace
+Frequenza 249: Cruz
+Frequenza 250: Gutierrez
+Frequenza 251: Graham, Kim
+Frequenza 253: Morales
+Frequenza 255: Henderson
+Frequenza 257: Powell
+Frequenza 259: Sullivan
+Frequenza 261: Fisher
+Frequenza 264: Russell
+Frequenza 265: Perry
+Frequenza 267: Jenkins
+Frequenza 271: Hughes
+Frequenza 274: Long, Wood
+Frequenza 275: Ross, Sanders
+Frequenza 277: Price
+Frequenza 281: Reyes
+Frequenza 285: Myers
+Frequenza 288: Richardson
+Frequenza 290: Foster
+Frequenza 297: Gray
+Frequenza 298: Bennett
+Frequenza 299: Brooks
+Frequenza 300: Watson
+Frequenza 304: Reed
+Frequenza 305: Diaz
+Frequenza 306: Ward
+Frequenza 309: James
+Frequenza 314: Bell
+Frequenza 315: Bailey
+Frequenza 324: Cox
+Frequenza 326: Gomez
+Frequenza 338: Howard, Morgan
+Frequenza 341: Morris
+Frequenza 344: Cooper
+Frequenza 345: Peterson
+Frequenza 350: Kelly
+Frequenza 351: Rogers
+Frequenza 353: Nguyen
+Frequenza 375: Collins
+Frequenza 378: Edwards
+Frequenza 382: Cook
+Frequenza 383: Murphy
+Frequenza 387: Torres
+Frequenza 388: Evans
+Frequenza 396: Rivera
+Frequenza 402: Flores
+Frequenza 403: Stewart
+Frequenza 425: Turner
+Frequenza 427: Parker
+Frequenza 432: Campbell
+Frequenza 445: Carter
+Frequenza 449: Roberts
+Frequenza 464: Phillips
+Frequenza 473: Mitchell
+Frequenza 490: Ramirez
+Frequenza 498: Scott
+Frequenza 501: Nelson
+Frequenza 518: Hill
+Frequenza 534: Sanchez
+Frequenza 537: Adams
+Frequenza 554: Hall
+Frequenza 556: Baker
+Frequenza 575: Wright
+Frequenza 582: Green
+Frequenza 584: Robinson
+Frequenza 588: King
+Frequenza 589: Allen
+Frequenza 602: Young
+Frequenza 615: Perez
+Frequenza 617: Walker
+Frequenza 654: Lewis
+Frequenza 733: Lopez
+Frequenza 739: Clark
+Frequenza 764: Lee
+Frequenza 779: Harris
+Frequenza 782: Gonzalez
+Frequenza 789: Thompson
+Frequenza 806: White
+Frequenza 818: Hernandez
+Frequenza 823: Martin
+Frequenza 826: Jackson
+Frequenza 847: Moore
+Frequenza 878: Taylor
+Frequenza 881: Thomas
+Frequenza 949: Anderson
+Frequenza 956: Wilson
+Frequenza 974: Rodriguez
+Frequenza 980: Martinez
+Frequenza 1069: Garcia
+Frequenza 1306: Davis
+Frequenza 1442: Miller
+Frequenza 1617: Brown
+Frequenza 1663: Jones
+Frequenza 1801: Williams
+Frequenza 2081: Missing
+Frequenza 2256: Johnson
+Frequenza 2985: Smith
+
+
+Stringhe anomale rilevate:
++-------------+---------------+
+| Stringa     | Frequenza     |
++=============+===============+
+| Key         | Frequenza 33  |
++-------------+---------------+
+| Blankenship | Frequenza 35  |
++-------------+---------------+
+| Gay         | Frequenza 39  |
++-------------+---------------+
+| Yu          | Frequenza 42  |
++-------------+---------------+
+| Ali         | Frequenza 46  |
++-------------+---------------+
+| Orr         | Frequenza 46  |
++-------------+---------------+
+| Fry         | Frequenza 49  |
++-------------+---------------+
+| Ho          | Frequenza 50  |
++-------------+---------------+
+| Wu          | Frequenza 50  |
++-------------+---------------+
+| Fitzpatrick | Frequenza 52  |
++-------------+---------------+
+| Pennington  | Frequenza 52  |
++-------------+---------------+
+| Lin         | Frequenza 54  |
++-------------+---------------+
+| Valenzuela  | Frequenza 57  |
++-------------+---------------+
+| Villanueva  | Frequenza 57  |
++-------------+---------------+
+| Villarreal  | Frequenza 57  |
++-------------+---------------+
+| Lam         | Frequenza 59  |
++-------------+---------------+
+| Livingston  | Frequenza 59  |
++-------------+---------------+
+| Mccullough  | Frequenza 63  |
++-------------+---------------+
+| Roy         | Frequenza 63  |
++-------------+---------------+
+| Stephenson  | Frequenza 64  |
++-------------+---------------+
+| Hutchinson  | Frequenza 67  |
++-------------+---------------+
+| Liu         | Frequenza 67  |
++-------------+---------------+
+| Li          | Frequenza 74  |
++-------------+---------------+
+| Harrington  | Frequenza 75  |
++-------------+---------------+
+| Christensen | Frequenza 82  |
++-------------+---------------+
+| Mclaughlin  | Frequenza 82  |
++-------------+---------------+
+| Strickland  | Frequenza 90  |
++-------------+---------------+
+| Le          | Frequenza 92  |
++-------------+---------------+
+| Fitzgerald  | Frequenza 94  |
++-------------+---------------+
+| May         | Frequenza 111 |
++-------------+---------------+
+| Day         | Frequenza 141 |
++-------------+---------------+
+| Williamson  | Frequenza 141 |
++-------------+---------------+
+| Montgomery  | Frequenza 144 |
++-------------+---------------+
+| Fox         | Frequenza 156 |
++-------------+---------------+
+| Ray         | Frequenza 156 |
++-------------+---------------+
+| Cunningham  | Frequenza 166 |
++-------------+---------------+
+| Washington  | Frequenza 204 |
++-------------+---------------+
+| Kim         | Frequenza 251 |
++-------------+---------------+
+| Richardson  | Frequenza 288 |
++-------------+---------------+
+| Cox         | Frequenza 324 |
++-------------+---------------+
+| Lee         | Frequenza 764 |
++-------------+---------------+
+
+Il valore del percentile minimo (0%) è: 24.0
+Il valore del percentile massimo (3%) è: 36.0
+
+Frequenze escluse: 2985, 2256, 2081, 1801, 1663, 1617, 1442, 1306, 1069, 980, 974, 956, 949, 881, 878, 847, 826, 823, 818, 806, 789, 782, 779, 764, 739, 733, 654, 617, 615, 602, 589, 588, 584, 582, 575, 556, 554, 537, 534, 518, 501, 498, 490, 473, 464, 449, 445, 432, 427, 425, 403, 402, 396, 388, 387, 383, 382, 378, 375, 353, 351, 350, 345, 344, 341, 338, 326, 324, 315, 314, 309, 306, 305, 304, 300, 299, 298, 297, 290, 288, 285, 281, 277, 275, 274, 271, 267, 265, 264, 261, 259, 257, 255, 253, 251, 250, 249, 248, 247, 246, 245, 243, 241, 238, 237, 235, 234, 233, 231, 228, 227, 223, 222, 221, 216, 215, 214, 211, 210, 208, 206, 205, 204, 202, 199, 198, 197, 196, 194, 193, 192, 190, 189, 188, 186, 185, 184, 183, 181, 179, 178, 177, 176, 174, 173, 170, 169, 168, 167, 166, 165, 164, 163, 162, 161, 160, 159, 158, 157, 156, 155, 154, 153, 152, 151, 150, 149, 148, 147, 145, 144, 143, 142, 141, 140, 139, 138, 136, 135, 134, 133, 132, 131, 130, 129, 128, 127, 126, 124, 123, 122, 120, 119, 118, 117, 116, 115, 113, 112, 111, 110, 109, 108, 107, 106, 104, 103, 102, 101, 100, 99, 98, 97, 96, 95, 94, 93, 92, 91, 90, 89, 88, 87, 86, 85, 84, 83, 82, 81, 80, 79, 78, 77, 76, 75, 74, 73, 72, 71, 70, 69, 68, 67, 66, 65, 64, 63, 62, 61, 60, 59, 58, 57, 56, 55, 54, 53, 52, 51, 50, 49, 48, 47, 46, 45, 44, 43, 42, 41, 40, 39, 38, 37
+Frequenze mantenute: 36, 35, 34, 33, 32, 31, 30, 29, 28, 26, 24</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="%5BSTEP%202.2%5D%20Users%20EDA_files/figure-html/cell-10-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="%5BSTEP%202.2%5D%20Users%20EDA_files/figure-html/cell-10-output-3.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Everything is ok</p>
+</section>
+<section id="gender-column" class="level3">
+<h3 class="anchored" data-anchor-id="gender-column">Gender column</h3>
+<div id="cell-22" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the distribution</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>users[<span class="st">"gender"</span>].value_counts().plot(kind<span class="op">=</span><span class="st">'bar'</span>, color<span class="op">=</span><span class="st">'darkcyan'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="%5BSTEP%202.2%5D%20Users%20EDA_files/figure-html/cell-11-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="email-column" class="level3">
+<h3 class="anchored" data-anchor-id="email-column">Email column</h3>
+<div id="cell-24" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># print the 5 most frequent email</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>users[<span class="st">'email'</span>].value_counts().head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<pre><code>email
+smith@gmail.com       377
+michael@gmail.com     325
+johnson@gmail.com     267
+james@gmail.com       238
+williams@gmail.com    233
+Name: count, dtype: int64</code></pre>
+</div>
+</div>
+<p>Something is strange here</p>
+<div id="cell-26" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># show the rows that have the email "smith@gmail.com"</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>users[users[<span class="st">'email'</span>] <span class="op">==</span> <span class="st">"smith@gmail.com"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">customer_id</th>
+<th data-quarto-table-cell-role="th">user_first_name</th>
+<th data-quarto-table-cell-role="th">user_last_name</th>
+<th data-quarto-table-cell-role="th">gender</th>
+<th data-quarto-table-cell-role="th">email</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">92</td>
+<td>7fcff1cd-6a84-4e00-a37d-ea85fcd83755</td>
+<td>Katherine</td>
+<td>Smith</td>
+<td>Female</td>
+<td>smith@gmail.com</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">622</td>
+<td>8afea47f-7712-4e2e-b995-e98c2a2c72c5</td>
+<td>Linda</td>
+<td>Smith</td>
+<td>Female</td>
+<td>smith@gmail.com</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">1390</td>
+<td>9526a94c-637f-4250-b576-98a6ebb4276d</td>
+<td>Melissa</td>
+<td>Smith</td>
+<td>Female</td>
+<td>smith@gmail.com</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1990</td>
+<td>f4d9430d-15c0-40ea-a10d-5ab01bbad782</td>
+<td>Karen</td>
+<td>Smith</td>
+<td>Female</td>
+<td>smith@gmail.com</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2886</td>
+<td>0b83189f-1426-41b6-bdb0-ddb79565cb6c</td>
+<td>Roy</td>
+<td>Smith</td>
+<td>Male</td>
+<td>smith@gmail.com</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">135441</td>
+<td>90962d00-b9fe-476e-8b07-2bd625c5d775</td>
+<td>Connor</td>
+<td>NaN</td>
+<td>Male</td>
+<td>smith@gmail.com</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">135538</td>
+<td>81d788e2-77a5-4ce0-88e4-20b3c7d13e30</td>
+<td>Carol</td>
+<td>Smith</td>
+<td>Female</td>
+<td>smith@gmail.com</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">135894</td>
+<td>ffdfa270-c248-4a38-a57d-6fea61e3e98c</td>
+<td>Bradley</td>
+<td>Smith</td>
+<td>Male</td>
+<td>smith@gmail.com</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">136215</td>
+<td>52999433-f89e-487b-b78f-f1ba505f3ead</td>
+<td>Bianca</td>
+<td>Smith</td>
+<td>Female</td>
+<td>smith@gmail.com</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">137233</td>
+<td>611ae977-6fa4-4997-a1d8-8fadd325a20d</td>
+<td>Amy</td>
+<td>Smith</td>
+<td>Female</td>
+<td>smith@gmail.com</td>
+</tr>
+</tbody>
+</table>
+
+<p>377 rows × 5 columns</p>
+</div>
+</div>
+</div>
+<div id="cell-27" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the distribution of the email domain</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>users[<span class="st">'email'</span>].<span class="bu">str</span>.split(<span class="st">'@'</span>).<span class="bu">str</span>[<span class="dv">1</span>].value_counts().plot(kind<span class="op">=</span><span class="st">'pie'</span>, color<span class="op">=</span><span class="st">'darkcyan'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="%5BSTEP%202.2%5D%20Users%20EDA_files/figure-html/cell-14-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-28" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># save the users domain in a new column</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>users[<span class="st">'email_domain'</span>] <span class="op">=</span> users[<span class="st">'email'</span>].<span class="bu">str</span>.split(<span class="st">'@'</span>).<span class="bu">str</span>[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>It appears that the dataset contains dummies values for the email field</p>
+<p>For now ignore it, because it might be useful in a real scenario (sending promotional emails)</p>
+<div id="cell-30" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># save the cleaned data</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>users.to_csv(<span class="st">'Cleaned_Data/users.csv'</span>, index<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
